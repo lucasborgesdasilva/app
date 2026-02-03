@@ -200,4 +200,4 @@ const config: Config = {
   // watchman: true,
 };
 
-export = config;
+export default config;
