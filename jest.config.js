@@ -9,6 +9,7 @@ const config = {
   rootDir: './src',
   testEnvironment: 'node',
   
+  setupFilesAfterEnv: ['./shared/infra/testing/expect-helpers.ts'],
   extensionsToTreatAsEsm: ['.ts', '.mts'],
   
   transform: {
