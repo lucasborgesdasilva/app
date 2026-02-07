@@ -1,5 +1,5 @@
-import { Uuid } from "../../shared/domain/value-objects/uuid.vo";
-import { Category } from "../domain/category.entity";
+import { Uuid } from "../../../shared/domain/value-objects/uuid.vo";
+import { Category } from "../category.entity";
 
 //AAA (Arrange, Act, Assert)
   // Arrange - Delimito o input de dados

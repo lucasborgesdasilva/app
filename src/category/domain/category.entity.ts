@@ -1,6 +1,7 @@
 //Estou usando uma modelagem de entidade purista, sem frameworks ou bibliotecas. tendendo a ser rica e não anêmica. que no caso, a entidade tem apenas atributos e um construtor simples.
 
 import { Uuid } from "../../shared/domain/value-objects/uuid.vo";
+import { CategoryValidatorFactory } from "./category.validator";
 
 //Isso tudo com base no DDD - Domain Driven Design.
 export type CategoryConstructorProps = {
@@ -57,6 +58,11 @@ export class Category {
   deactivate(): void {
     this.is_active = false;
   } 
+
+  static validate(entity: Category) {
+    const validator = CategoryValidatorFactory.create();
+    return validator.validate(entity);
+  }
 
   toJSON() {
     return {
