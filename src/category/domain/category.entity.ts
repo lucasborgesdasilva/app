@@ -1,6 +1,8 @@
 //Estou usando uma modelagem de entidade purista, sem frameworks ou bibliotecas. tendendo a ser rica e não anêmica. que no caso, a entidade tem apenas atributos e um construtor simples.
 
+import { Entity } from "../../shared/domain/entity";
 import { EntityValidationError } from "../../shared/domain/validators/validation-error";
+import { ValueObject } from "../../shared/domain/value-object";
 import { Uuid } from "../../shared/domain/value-objects/uuid.vo";
 import { CategoryValidatorFactory } from "./category.validator";
 
@@ -19,7 +21,7 @@ export type CategoryCreateCommand = {
   is_active?: boolean;
 }
 
-export class Category {
+export class Category extends Entity {
   category_id: Uuid;
   name: string;
   description: string | null;
@@ -27,11 +29,16 @@ export class Category {
   created_at: Date;
 
   constructor(props: CategoryConstructorProps) {
+    super();
     this.category_id = props.category_id ?? new Uuid();
     this.name = props.name;
     this.description = props.description ?? null;
     this.is_active = props.is_active ?? true;
     this.created_at = props.created_at ?? new Date();
+  }
+
+  get entity_id(): ValueObject {
+    return this.category_id;
   }
 
   //factory method
