@@ -36,7 +36,9 @@ export class Category {
   //factory method
   //Ao invés de usar o new Category, do construtor, usamos esse método estático.
   static create(props: CategoryCreateCommand): Category {
-    return new Category(props);
+    const category = new Category(props);
+    Category.validate(category);
+    return category;
   }
 
   //Por que não usar setters e getters?
@@ -45,10 +47,12 @@ export class Category {
   //Em vez disso, é preferível usar métodos explícitos que representem ações ou comportamentos da entidade, mantendo assim a integridade do modelo de domínio.
   changeName(name: string): void {
     this.name = name;
+    Category.validate(this);
   }
 
   changeDescription(description: string | null): void {
     this.description = description;
+    Category.validate(this);
   }
 
   activate(): void {
