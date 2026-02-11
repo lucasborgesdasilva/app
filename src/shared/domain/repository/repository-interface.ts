@@ -1,5 +1,7 @@
 import { Entity } from "../entity";
 import { ValueObject } from "../value-object";
+import { SearchParams } from "./search-params";
+import { SearchResult } from "./search-result";
 
 /**
  * Criei um repositório genérico para ser utilizado por todas as entidades do sistema.
@@ -16,4 +18,14 @@ export interface IRepository<E extends Entity, EntityId extends ValueObject> {
 
   bulkInsert(entities: E[]): Promise<void>;
   getEntity(): new (...args: any[]) => E;
+}
+
+export interface ISearchableRepository<
+  E extends Entity, 
+  EntityId extends ValueObject, 
+  SearchInput = SearchParams, 
+  SearchOutput = SearchResult
+> extends IRepository<E, EntityId> {
+  sortableFields: string[];
+  search(props: SearchInput): Promise<SearchOutput>;
 }
