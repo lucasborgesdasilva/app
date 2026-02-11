@@ -1,7 +1,7 @@
-import { Entity } from "../../domain/entity";
-import { NotFoundError } from "../../domain/errors/not-found.error";
-import { IRepository } from "../../domain/repository/repository-interface";
-import { ValueObject } from "../../domain/value-object";
+import { Entity } from "../../../domain/entity";
+import { NotFoundError } from "../../../domain/errors/not-found.error";
+import { IRepository } from "../../../domain/repository/repository-interface";
+import { ValueObject } from "../../../domain/value-object";
 
 /**
  * Implementei um repositório em memória que pode ser utilizado para testes ou para casos onde não é necessário persistir os dados.
